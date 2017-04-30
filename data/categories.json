@@ -1,0 +1,30 @@
+[
+  {
+    "id": "1",
+    "label": "Biographies & Memoirs"
+  },
+  {
+    "id": "2",
+    "label": "Business & Money"
+  },
+  {
+    "id": "3",
+    "label": "Children's eBooks"
+  },
+  {
+    "id": "4",
+    "label": "Comics & Graphic Novels"
+  },
+  {
+    "id": "5",
+    "label": "Literature & Fiction"
+  },
+  {
+    "id": "6",
+    "label": "Mystery, Thriller, & Suspense"
+  },
+  {
+    "id": "7",
+    "label": "Science Fiction & Fantasy"
+  }
+]

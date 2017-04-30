@@ -1,0 +1,28 @@
+[
+  {
+    "id": "1",
+    "title": "The Hobbit",
+    "author": "J.R.R Tolkien",
+    "categories": [
+      "5",
+      "7"
+    ]
+  },
+  {
+    "id": "2",
+    "title": "I, Robot",
+    "author": "Isaac Asimov",
+    "categories": [
+      "5",
+      "7"
+    ]
+  },
+  {
+    "id": "3",
+    "title": "Steve Jobs",
+    "author": "Albert Watson",
+    "categories": [
+      "1"
+    ]
+  }
+]

@@ -1,0 +1,23 @@
+interface Node {
+  id: ID!
+}
+
+type Category implements Node {
+  id: ID!
+  label: String
+}
+
+type Book implements Node {
+  id: ID!
+  title: String
+  author: String
+  categories: [Category]
+}
+
+type Query {
+  Book(id: ID!): Book
+  Books: [Book]
+  Category(id: ID!): [Book]
+  Categories: [Category]
+  node(id: ID!): Node
+}
