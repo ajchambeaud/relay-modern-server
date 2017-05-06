@@ -2,7 +2,7 @@ const express = require('express');
 const graphqlHTTP = require('express-graphql');
 const model = require('./model');
 const schema = require('./schema');
-const { fromGlobalId } = require('graphql-relay');
+const { fromGlobalId, connectionFromPromisedArray } = require('graphql-relay');
 const cors = require('cors');
 const app = express();
 
@@ -11,9 +11,14 @@ const getId = gloabalID => {
   return id;
 };
 
+const creacteConnection = (promisedAray, args) => connectionFromPromisedArray(promisedAray, args);
+
 const queryResolver = {
   book: ({ id }) => model.book.getById(getId(id)),
-  books: () => model.book.getAll(),
+  books: args =>
+    args.categoryId
+      ? creacteConnection(model.book.getByCategoryId(getId(args.categoryId)), args)
+      : creacteConnection(model.book.getAll(), args),
   category: ({ id }) => model.book.getByCategoryId(getId(id)),
   categories: () => model.category.getAll()
 };
