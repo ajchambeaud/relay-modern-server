@@ -12,6 +12,19 @@ const { nodeField } = require('./node');
 const { bookType, bookConnection } = require('./types/book');
 const { categoryType } = require('./types/category');
 
+const catalogType = new GraphQLObjectType({
+  name: 'Catalog',
+  fields: () => ({
+    books: {
+      type: bookConnection,
+      args: Object.assign({ categoryId: { type: GraphQLString } }, connectionArgs)
+    },
+    categories: {
+      type: new GraphQLList(categoryType)
+    }
+  })
+});
+
 const queryType = new GraphQLObjectType({
   name: 'Query',
   fields: () => ({
@@ -19,16 +32,8 @@ const queryType = new GraphQLObjectType({
       type: bookType,
       args: { id: { type: GraphQLString } }
     },
-    category: {
-      type: new GraphQLList(bookType),
-      args: { id: { type: GraphQLString } }
-    },
-    books: {
-      type: bookConnection,
-      args: Object.assign({ categoryId: { type: GraphQLString } }, connectionArgs)
-    },
-    categories: {
-      type: new GraphQLList(categoryType)
+    catalog: {
+      type: catalogType
     },
     node: nodeField
   })

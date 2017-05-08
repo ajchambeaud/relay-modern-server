@@ -15,12 +15,13 @@ const creacteConnection = (promisedAray, args) => connectionFromPromisedArray(pr
 
 const queryResolver = {
   book: ({ id }) => model.book.getById(getId(id)),
-  books: args =>
-    args.categoryId
-      ? creacteConnection(model.book.getByCategoryId(getId(args.categoryId)), args)
-      : creacteConnection(model.book.getAll(), args),
-  category: ({ id }) => model.book.getByCategoryId(getId(id)),
-  categories: () => model.category.getAll()
+  catalog: {
+    books: args =>
+      args.categoryId
+        ? creacteConnection(model.book.getByCategoryId(getId(args.categoryId)), args)
+        : creacteConnection(model.book.getAll(), args),
+    categories: () => model.category.getAll()
+  }
 };
 
 app.use(cors());
